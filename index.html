@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #d97706; /* Slightly deeper Amber for better contrast on light gray */
-            --bg-body: #e5e7eb; /* Light gray, two steps away from white (Tailwind gray-200) */
-            --bg-card: #f3f4f6; /* Lighter gray for cards to create depth */
-            --text-main: #111827; /* Dark text for readability on light background */
+            --primary: #d97706;
+            --bg-body: #e5e7eb;
+            --bg-card: #f3f4f6;
+            --text-main: #111827;
             --text-muted: #4b5563;
             --accent-soft: rgba(217, 119, 6, 0.1);
         }
@@ -41,7 +41,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(229, 231, 235, 0.85); /* Matching light gray bg */
+            background: rgba(229, 231, 235, 0.85);
             backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -257,6 +257,26 @@
             background: #f9fafb;
         }
 
+        .journal-tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+
+        .tag-live {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+
+        .tag-coming {
+            background: rgba(107, 114, 128, 0.1);
+            color: #6b7280;
+        }
+
         /* Footer */
         footer {
             padding: 6rem 10% 4rem;
@@ -371,20 +391,47 @@
     <section id="work">
         <h2 class="section-title">Journal & Artifacts</h2>
         <div class="journal-list">
+
+            <!-- Workshop 1: Research Portfolio -->
             <div class="journal-item">
                 <div>
-                    <h4 style="color: var(--primary); font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Week 1: Research Portfolio</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">Status: Live & Published</p>
+                    <h4 style="color: var(--primary); font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Workshop 1: Research Portfolio</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">Built a professional research portfolio using HTML, CSS, and AI-assisted design tools.</p>
+                    <span class="journal-tag tag-live">LIVE</span>
                 </div>
-                <a href="#" style="color: var(--text-main); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-bottom: 2px solid var(--primary);">View Project →</a>
+                <a href="https://est-cida.github.io/graph-ai-portfolio/" target="_blank" style="color: var(--text-main); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-bottom: 2px solid var(--primary);">View Project →</a>
             </div>
+
+            <!-- Workshop 2: Automated Data Analysis -->
+            <div class="journal-item">
+                <div>
+                    <h4 style="color: var(--primary); font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Workshop 2: Automated Data Analysis</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">Analyzed Gapminder data to explore relationships between global health indicators using AI tools for data cleaning, visualization, and insight extraction.</p>
+                    <span class="journal-tag tag-live">LIVE</span>
+                </div>
+                <a href="https://github.com/Est-Cida/graph-ai-portfolio/blob/main/MortalityAnalysis.html" target="_blank" style="color: var(--text-main); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-bottom: 2px solid var(--primary);">View Report →</a>
+            </div>
+
+            <!-- Workshop 3: Job Market Data Analysis -->
+            <div class="journal-item">
+                <div>
+                    <h4 style="color: var(--primary); font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Workshop 3: Job Market Data Analysis</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">Used LLMs in Google Sheets to extract information from job postings, then analyzed relationships between experience requirements, programming languages, and salaries.</p>
+                    <span class="journal-tag tag-live">LIVE</span>
+                </div>
+                <a href="https://github.com/Est-Cida/graph-ai-portfolio/blob/main/data_analyst_report.html" target="_blank" style="color: var(--text-main); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-bottom: 2px solid var(--primary);">View Report →</a>
+            </div>
+
+            <!-- Week 4: Coming Soon -->
             <div class="journal-item" style="opacity: 0.6;">
                 <div>
-                    <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Week 2: AI Data Analysis</h4>
-                    <p style="font-size: 0.9rem; margin-top: 0.25rem;">Status: Initial Research Phase</p>
+                    <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem;">Workshop 4: Custom GPTs</h4>
+                    <p style="font-size: 0.9rem; margin-top: 0.25rem;">Designing agents for specific research protocols and high-stakes data tasks.</p>
+                    <span class="journal-tag tag-coming">COMING SOON</span>
                 </div>
                 <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted);">Coming Soon</span>
             </div>
+
         </div>
     </section>
 
