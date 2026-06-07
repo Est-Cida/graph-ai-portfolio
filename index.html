@@ -277,6 +277,45 @@
             color: #6b7280;
         }
 
+        /* Contact / Consultation Section */
+        #contact {
+            background: white;
+        }
+
+        .contact-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .form-container {
+            background: var(--bg-card);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .form-container iframe {
+            border-radius: 0.75rem;
+            max-width: 100%;
+        }
+
         /* Footer */
         footer {
             padding: 6rem 10% 4rem;
@@ -299,6 +338,8 @@
             .intro-grid { grid-template-columns: 1fr; margin-top: 2rem; }
             .profile-frame { width: 300px; height: 300px; }
             .journal-item { flex-direction: column; text-align: center; gap: 1.5rem; }
+            .form-container { padding: 1rem; }
+            .form-container iframe { width: 100% !important; }
         }
     </style>
 </head>
@@ -310,12 +351,13 @@
             <a href="#about">About</a>
             <a href="#course">AI Journey</a>
             <a href="#work">Journal</a>
+            <a href="#contact">Contact</a>
             <a href="https://www.linkedin.com/in/placida-orlunwo-phd-3b504264" target="_blank">LinkedIn</a>
         </div>
     </nav>
 
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/05/31/17/20260531172751-WX285FQT.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2026/05/31/17/20260531172751-WX285FQT.js" defer></script>
     
     <header>
         <div class="hero-text">
@@ -435,6 +477,28 @@
                 <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted);">Coming Soon</span>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Contact for Consultation Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact for Consultation</h2>
+        <div class="contact-wrapper">
+            <div class="contact-intro">
+                <p>Interested in collaborating on global health research, AI-driven data analysis, or humanitarian strategy? Fill out the form below and I'll be in touch.</p>
+            </div>
+            <div class="form-container">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLScW7tFimimbWyvLBRAUTDCJxUw-_-0OhsNRB_QJ6cbEgOCt4g/viewform?embedded=true" 
+                    width="640" 
+                    height="860" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    title="Consultation Request Form">
+                    Loading…
+                </iframe>
+            </div>
         </div>
     </section>
 
