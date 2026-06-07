@@ -253,6 +253,34 @@
   .sub-card .sub-link.live:hover { text-decoration: underline; }
   .sub-card .sub-link.soonlink { color: var(--muted); pointer-events: none; }
 
+  /* ---------- CONSULTATION FORM ---------- */
+  #consultation { background: var(--bg-white); text-align: center; }
+  #consultation p.lead {
+    color: #4a4f55; max-width: 600px; margin: 0 auto 2.5rem; font-size: .98rem;
+  }
+  .form-frame-wrap { display: flex; justify-content: center; }
+  .form-frame-wrap iframe {
+    width: 100%; max-width: 640px; height: 860px;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: #fff; box-shadow: 0 14px 30px rgba(0,0,0,.06);
+  }
+
+  /* ---------- FLOATING CONSULTATION BUTTON ---------- */
+  .fab {
+    position: fixed; right: 24px; bottom: 24px; z-index: 1200;
+    display: inline-flex; align-items: center; gap: .55rem;
+    background: var(--accent); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: .85rem; letter-spacing: .3px;
+    padding: .85rem 1.4rem; border-radius: 50px;
+    box-shadow: 0 10px 26px rgba(192,57,43,.4);
+    transition: transform .25s, background .25s, box-shadow .25s;
+  }
+  .fab:hover { background: #a93226; transform: translateY(-3px); box-shadow: 0 14px 32px rgba(192,57,43,.5); }
+  .fab svg { width: 18px; height: 18px; fill: #fff; }
+  @media (max-width: 600px) {
+    .fab { bottom: 88px; padding: .75rem 1.1rem; font-size: .8rem; }
+  }
+
   /* ---------- CONTACT ---------- */
   #contact { background: var(--ink); color: #fff; text-align: center; }
   #contact .section-title { color: #fff; }
@@ -289,6 +317,7 @@
       <a href="#about">About</a>
       <a href="#course">The Course</a>
       <a href="#submissions">Submissions</a>
+      <a href="#consultation">Consultation</a>
       <a href="#contact">Contact</a>
       <a href="https://www.linkedin.com/in/placida-orlunwo-phd-3b504264" target="_blank" rel="noopener">LinkedIn</a>
     </div>
@@ -588,6 +617,21 @@
     </div>
   </section>
 
+  <!-- ===== CONTACT FOR CONSULTATION ===== -->
+  <section id="consultation">
+    <div class="wrap">
+      <div class="eyebrow">Contact for Consultation</div>
+      <h2 class="section-title">Book a consultation.</h2>
+      <p class="lead">Have a health data, analytics, or AI project in mind? Fill out the short form below and I'll get back to you to discuss how we can work together.</p>
+      <div class="form-frame-wrap">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScW7tFimimbWyvLBRAUTDCJxUw-_-0OhsNRB_QJ6cbEgOCt4g/viewform?embedded=true"
+          width="640" height="860" frameborder="0" marginheight="0" marginwidth="0"
+          title="Consultation request form" loading="lazy">Loading…</iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CONTACT ===== -->
   <section id="contact">
     <div class="wrap">
@@ -598,13 +642,21 @@
         <a class="btn btn-primary" href="mailto:Orlunwoplacida@yahoo.com">Email Me</a>
         <a class="btn btn-ghost" style="border-color:#fff;color:#fff;" href="https://www.linkedin.com/in/placida-orlunwo-phd-3b504264" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <!-- ===== <div class="contact-info">
+      <div class="contact-info">
         <span>✉ <a href="mailto:Orlunwoplacida@yahoo.com">Orlunwoplacida@yahoo.com</a></span>
         <span>📍 Dakar, Senegal</span>
-         <!-- ===== <span>📞 +221 78 011 4277</span>
-      </div>===== -->
+        <span>📞 +221 78 011 4277</span>
+      </div>
     </div>
   </section>
+
+  <!-- ===== FLOATING CONSULTATION BUTTON ===== -->
+  <a href="#consultation" class="fab" aria-label="Contact for consultation">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+    </svg>
+    Book a Consultation
+  </a>
 
   <footer>
     <strong>DR. PLACIDA ORLUNWO</strong>
