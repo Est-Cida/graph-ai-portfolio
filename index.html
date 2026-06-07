@@ -86,17 +86,17 @@
   .btn-ghost { border: 1px solid var(--ink); color: var(--ink); }
   .btn-ghost:hover { background: var(--ink); color: #fff; }
 
-  /* profile image with accent wedge */
-  .portrait { position: relative; display: flex; justify-content: center; }
+  /* profile image with accent wedge — borderless, sits inside the pink design */
+  .portrait { position: relative; display: flex; justify-content: center; align-items: center; }
   .portrait .wedge {
     position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
-    width: 230px; height: 230px; background: var(--accent-soft);
+    width: 270px; height: 270px; background: var(--accent-soft);
     border-radius: 50% 50% 50% 0; z-index: 0;
   }
   .portrait img {
     position: relative; z-index: 1;
     width: 250px; height: 250px; border-radius: 50%;
-    object-fit: cover; border: 6px solid #fff;
+    object-fit: cover; border: none;
     box-shadow: 0 18px 40px rgba(0,0,0,.12);
   }
 
@@ -142,14 +142,42 @@
   /* About columns (like theme footer triad) */
   .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: start; }
   .about-grid p { color: #4a4f55; margin-bottom: 1.1rem; font-size: .95rem; }
-  .about-side {
-    background: var(--bg-band); border-radius: 8px; padding: 2rem;
+  .about-cards { display: flex; flex-direction: column; gap: 1.4rem; }
+  .info-card {
+    background: var(--bg-band); border: 1px solid var(--line);
+    border-radius: 10px; padding: 1.7rem;
   }
-  .about-side h4 { font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-  .about-side ul { list-style: none; }
-  .about-side li { font-size: .85rem; padding: .35rem 0; border-bottom: 1px solid var(--line); color: #4a4f55; }
-  .about-side li:last-child { border-bottom: none; }
-  .about-side li strong { color: var(--ink); }
+  .info-card > h4 {
+    font-size: 1.05rem; font-weight: 800; letter-spacing: -.2px;
+    color: var(--ink); margin-bottom: 1.2rem;
+  }
+
+  /* skill groups + pill tags */
+  .skill-group { margin-bottom: 1.2rem; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-cat {
+    font-size: .68rem; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .55rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .tags span {
+    background: #fff; border: 1px solid var(--line); border-radius: 20px;
+    padding: .28rem .7rem; font-size: .74rem; color: #4a4f55; line-height: 1.4;
+  }
+
+  /* education list */
+  .edu-list { list-style: none; }
+  .edu-list li {
+    position: relative; padding: .7rem 0 .7rem 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .edu-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .edu-list li::before {
+    content: ""; position: absolute; left: 0; top: 1.15rem;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+  }
+  .edu-degree { font-size: .9rem; font-weight: 700; color: var(--ink); }
+  .edu-school { font-size: .8rem; color: var(--muted); margin-top: .1rem; }
 
   /* triad columns */
   .triad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
@@ -166,6 +194,18 @@
   }
   .meta-pill strong { display: block; color: var(--accent); font-size: .72rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: .25rem; }
 
+  /* grading breakdown — now appears BEFORE the course detail */
+  .grading-block { margin-bottom: 3.5rem; }
+  .grading-block h3 {
+    font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; letter-spacing: -.3px;
+  }
+  .rubric { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .rubric .item { background: var(--bg-white); border: 1px solid var(--line); border-radius: 8px; padding: 1.4rem; text-align: center; }
+  .rubric .pct { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+  .rubric .item span { font-size: .78rem; color: var(--muted); display: block; margin-top: .3rem; }
+  .pass-note { margin-top: 1.2rem; font-size: .85rem; color: var(--muted); }
+  .pass-note strong { color: var(--ink); }
+
   table.schedule {
     width: 100%; border-collapse: collapse; font-size: .82rem; background: #fff;
     border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
@@ -179,36 +219,39 @@
   table.schedule td.wk { font-weight: 700; color: var(--ink); white-space: nowrap; }
   table.schedule td.date { white-space: nowrap; color: var(--accent); font-weight: 600; }
 
-  .rubric { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
-  .rubric .item { background: var(--bg-band); border-radius: 8px; padding: 1.4rem; text-align: center; }
-  .rubric .pct { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
-  .rubric .item span { font-size: .78rem; color: var(--muted); display: block; margin-top: .3rem; }
-  .pass-note { margin-top: 1.2rem; font-size: .85rem; color: var(--muted); }
-  .pass-note strong { color: var(--ink); }
-
-  /* ---------- SUBMISSIONS ---------- */
+  /* ---------- SUBMISSIONS (card grid) ---------- */
   .submissions { background: var(--bg-band); }
-  .sub-list {
-    background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+  .sub-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; margin-top: 2.5rem;
   }
-  .sub-item {
-    display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
-    padding: 1.6rem 2rem; border-bottom: 1px solid var(--line);
+  .sub-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: 1.7rem 1.6rem; display: flex; flex-direction: column;
+    transition: transform .25s, box-shadow .25s;
   }
-  .sub-item:last-child { border-bottom: none; }
-  .sub-item:hover { background: #fafafa; }
-  .sub-week { font-size: .72rem; font-weight: 800; color: var(--accent); letter-spacing: 1px; }
-  .sub-item h4 { font-size: 1.05rem; font-weight: 700; margin: .15rem 0 .25rem; }
-  .sub-item p { font-size: .82rem; color: var(--muted); max-width: 620px; }
-  .sub-link {
-    text-decoration: none; font-size: .75rem; font-weight: 700; letter-spacing: .5px;
-    text-transform: uppercase; white-space: nowrap;
+  .sub-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.08); }
+  .sub-card .meta-line {
+    font-size: .66rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: .9rem;
   }
-  .sub-link.live { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
-  .sub-link.soon { color: var(--muted); }
-  .tag { display: inline-block; font-size: .62rem; font-weight: 800; letter-spacing: .6px; padding: .15rem .5rem; border-radius: 3px; margin-top: .4rem; }
-  .tag.live { background: rgba(192,57,43,.1); color: var(--accent); }
-  .tag.soon { background: rgba(107,113,120,.12); color: var(--muted); }
+  .sub-card h4 { font-size: 1.02rem; font-weight: 700; line-height: 1.3; margin-bottom: .6rem; }
+  .sub-card p { font-size: .82rem; color: var(--muted); flex-grow: 1; margin-bottom: 1.1rem; }
+  .status {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .72rem; font-weight: 700; letter-spacing: .3px;
+    padding: .3rem .7rem; border-radius: 20px; margin-bottom: 1rem; width: fit-content;
+  }
+  .status.done { background: rgba(192,57,43,.1); color: var(--accent); }
+  .status.done::before { content: "✓"; font-weight: 800; }
+  .status.soon { background: rgba(107,113,120,.12); color: var(--muted); }
+  .status.soon::before { content: "○"; }
+  .sub-card .sub-link {
+    text-decoration: none; font-size: .75rem; font-weight: 700; letter-spacing: .4px;
+    margin-top: auto;
+  }
+  .sub-card .sub-link.live { color: var(--accent); }
+  .sub-card .sub-link.live:hover { text-decoration: underline; }
+  .sub-card .sub-link.soonlink { color: var(--muted); pointer-events: none; }
 
   /* ---------- CONTACT ---------- */
   #contact { background: var(--ink); color: #fff; text-align: center; }
@@ -231,8 +274,8 @@
     .about-grid { grid-template-columns: 1fr; }
     .triad { grid-template-columns: 1fr; }
     .rubric { grid-template-columns: repeat(2, 1fr); }
+    .sub-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
-    .sub-item { flex-direction: column; align-items: flex-start; }
     table.schedule { font-size: .74rem; }
     table.schedule th, table.schedule td { padding: .6rem .55rem; }
   }
@@ -321,15 +364,52 @@
           <p>I'm currently embedded within the World Health Organization (WHO AFRO, Dakar Hub) as a Machine Learning and Disease Modelling Specialist, supporting 47 countries through data analysis, visualization, and triangulation — and building country capacity through dashboards, technical guides, training manuals, and Training-of-Trainers approaches.</p>
           <p>My expertise spans cloud engineering, advanced analytics, and responsible AI. I've led the development of data lakehouses and pipelines, Retrieval-Augmented Generation (RAG) document retrieval systems, NLP pipelines for online content extraction, and mission-critical outbreak intelligence platforms — working with governments, regional bodies, and UN partners.</p>
         </div>
-        <div class="about-side">
-          <h4>At a Glance</h4>
-          <ul>
-            <li><strong>Role:</strong> ML &amp; Disease Modelling Specialist</li>
-            <li><strong>Org:</strong> WHO AFRO — Dakar Hub</li>
-            <li><strong>Location:</strong> Dakar, Senegal</li>
-            <li><strong>Languages:</strong> English (fluent), French (intermediate)</li>
-            <li><strong>Education:</strong> PhD Information Technology</li>
-          </ul>
+        <div class="about-cards">
+          <div class="info-card">
+            <h4>Technical Skills</h4>
+
+            <div class="skill-group">
+              <div class="skill-cat">AI / Data</div>
+              <div class="tags">
+                <span>Python</span><span>R</span><span>LLMs &amp; RAG</span><span>NLP (spaCy, BERT)</span>
+                <span>Tableau</span><span>Power BI / PowerPivot</span><span>Microsoft Fabric</span>
+                <span>Hadoop</span><span>Spark</span><span>Storm</span><span>Pig</span><span>Hive</span><span>Apache Iceberg</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-cat">Cloud &amp; DevOps</div>
+              <div class="tags">
+                <span>Azure Data Factory</span><span>GitHub Actions</span><span>Docker</span>
+                <span>Kubernetes</span><span>CI/CD Pipelines</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-cat">Development</div>
+              <div class="tags">
+                <span>FastAPI</span><span>React / TypeScript</span><span>SQL Server</span><span>PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h4>Education</h4>
+            <ul class="edu-list">
+              <li>
+                <div class="edu-degree">PhD, Information Technology</div>
+                <div class="edu-school">Ignatius Ajuru University of Education</div>
+              </li>
+              <li>
+                <div class="edu-degree">MSc, Computer Science</div>
+                <div class="edu-school">Ignatius Ajuru University of Education</div>
+              </li>
+              <li>
+                <div class="edu-degree">BSc, Computer Science &amp; Information Systems</div>
+                <div class="edu-school">Oxford Brookes University</div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -355,7 +435,19 @@
     <div class="wrap">
       <div class="eyebrow">The Course · Cohort 2026 T2</div>
       <h2 class="section-title">Generative AI for Work &amp; Research Productivity</h2>
-      <p style="color:#4a4f55; max-width:680px; margin-bottom:.5rem;">No-Code AI Tools for Task Automation — an eight-week program combining ~1 hour of weekly prework (video lessons and practice quizzes) with hands-on workshops where students apply concepts through active learning.</p>
+      <p style="color:#4a4f55; max-width:680px; margin-bottom:2.5rem;">No-Code AI Tools for Task Automation — an eight-week program combining ~1 hour of weekly prework (video lessons and practice quizzes) with hands-on workshops where students apply concepts through active learning.</p>
+
+      <!-- GRADING BREAKDOWN — moved before the course detail -->
+      <div class="grading-block">
+        <h3>Grading Breakdown</h3>
+        <div class="rubric">
+          <div class="item"><div class="pct">10%</div><span>Online quizzes</span></div>
+          <div class="item"><div class="pct">40%</div><span>Graded workshop assignments</span></div>
+          <div class="item"><div class="pct">10%</div><span>Attendance &amp; participation</span></div>
+          <div class="item"><div class="pct">40%</div><span>Final project</span></div>
+        </div>
+        <p class="pass-note"><strong>Passing grade: 80%.</strong> Attend at least 5 workshops to receive full attendance credit.</p>
+      </div>
 
       <div class="course-meta">
         <div class="meta-pill"><strong>Weekly Workshop</strong>Sundays 5–7 PM GMT or Wednesdays 3–5 PM GMT</div>
@@ -418,103 +510,79 @@
           </tr>
         </tbody>
       </table>
-
-      <div class="rubric">
-        <div class="item"><div class="pct">10%</div><span>Online quizzes</span></div>
-        <div class="item"><div class="pct">40%</div><span>Graded workshop assignments</span></div>
-        <div class="item"><div class="pct">10%</div><span>Attendance &amp; participation</span></div>
-        <div class="item"><div class="pct">40%</div><span>Final project</span></div>
-      </div>
-      <p class="pass-note"><strong>Passing grade: 80%.</strong> Attend at least 5 workshops to receive full attendance credit.</p>
     </div>
   </section>
 
-  <!-- ===== SUBMISSIONS ===== -->
+  <!-- ===== SUBMISSIONS (card grid) ===== -->
   <section id="submissions" class="submissions">
     <div class="wrap">
       <div class="eyebrow">My Weekly Submissions</div>
       <h2 class="section-title">Workshop Artifacts &amp; Journal</h2>
-      <p style="color:#4a4f55; max-width:640px; margin-bottom:2.5rem;">A running log of my work for each week of the cohort. Links will be added as each submission goes live.</p>
+      <p style="color:#4a4f55; max-width:640px;">Each week I complete hands-on assignments applying Generative AI tools to real-world data and research workflows. Links to each submission will be added as the course progresses.</p>
 
-      <div class="sub-list">
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 01</div>
-            <h4>Websites &amp; Presentations</h4>
-            <p>Built a professional research portfolio using HTML, CSS, and AI-assisted design tools, deployed on GitHub Pages.</p>
-            <span class="tag live">LIVE</span>
-          </div>
-          <a class="sub-link live" href="https://est-cida.github.io/graph-ai-portfolio/" target="_blank" rel="noopener">View Project →</a>
+      <div class="sub-grid">
+        <div class="sub-card">
+          <div class="meta-line">Week 1 · Module 1</div>
+          <h4>Websites &amp; Presentations</h4>
+          <p>Built a professional research portfolio using HTML, CSS, and AI-assisted design tools, deployed on GitHub Pages.</p>
+          <span class="status done">Completed</span>
+          <a class="sub-link live" href="https://est-cida.github.io/graph-ai-portfolio/" target="_blank" rel="noopener">View submission →</a>
         </div>
 
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 02</div>
-            <h4>Automated Data Analysis</h4>
-            <p>No-code data analysis of global health indicators using AI tools for cleaning, visualization, and insight extraction.</p>
-            <span class="tag soon">PLACEHOLDER</span>
-          </div>
-          <a class="sub-link soon" href="#">Coming Soon</a>
+        <div class="sub-card">
+          <div class="meta-line">Week 2 · Module 2</div>
+          <h4>Automated Data Analysis</h4>
+          <p>No-code data analysis of global health indicators using AI tools for cleaning, visualization, and insight extraction.</p>
+          <span class="status soon">Coming soon</span>
+          <a class="sub-link soonlink" href="#">View submission</a>
         </div>
 
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 03</div>
-            <h4>Text Processing &amp; Research</h4>
-            <p>Using LLMs in spreadsheets for text classification, sentiment analysis, summarization, and literature synthesis.</p>
-            <span class="tag soon">PLACEHOLDER</span>
-          </div>
-          <a class="sub-link soon" href="#">Coming Soon</a>
+        <div class="sub-card">
+          <div class="meta-line">Week 3 · Module 3</div>
+          <h4>Text Processing &amp; Research</h4>
+          <p>Using LLMs in spreadsheets for text classification, sentiment analysis, summarization, and literature synthesis.</p>
+          <span class="status soon">Coming soon</span>
+          <a class="sub-link soonlink" href="#">View submission</a>
         </div>
 
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 04</div>
-            <h4>Custom GPTs &amp; Chatbots</h4>
-            <p>Designing interactive chatbots with Botpress and custom GPTs for specific research and data tasks.</p>
-            <span class="tag soon">PLACEHOLDER</span>
-          </div>
-          <a class="sub-link soon" href="#">Coming Soon</a>
+        <div class="sub-card">
+          <div class="meta-line">Week 4 · Module 4</div>
+          <h4>Custom GPTs &amp; Chatbots</h4>
+          <p>Designing interactive chatbots with Botpress and custom GPTs for specific research and data tasks.</p>
+          <span class="status soon">Coming soon</span>
+          <a class="sub-link soonlink" href="#">View submission</a>
         </div>
 
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 05</div>
-            <h4>AI for Workflow Automation</h4>
-            <p>Building AI workflow automations and exploring browser control agents.</p>
-            <span class="tag soon">PLACEHOLDER</span>
-          </div>
-          <a class="sub-link soon" href="#">Coming Soon</a>
+        <div class="sub-card">
+          <div class="meta-line">Week 5 · Module 5</div>
+          <h4>AI for Workflow Automation</h4>
+          <p>Building AI workflow automations and exploring browser control agents.</p>
+          <span class="status soon">Coming soon</span>
+          <a class="sub-link soonlink" href="#">View submission</a>
         </div>
 
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 06</div>
-            <h4>GenAI for Communication &amp; Outreach</h4>
-            <p>Creating graphics with ChatGPT &amp; Canva, editable AI-generated SVG diagrams, and AI-generated video.</p>
-            <span class="tag soon">PLACEHOLDER</span>
-          </div>
-          <a class="sub-link soon" href="#">Coming Soon</a>
+        <div class="sub-card">
+          <div class="meta-line">Week 6 · Module 6</div>
+          <h4>GenAI for Communication &amp; Outreach</h4>
+          <p>Creating graphics with ChatGPT &amp; Canva, editable AI-generated SVG diagrams, and AI-generated video.</p>
+          <span class="status soon">Coming soon</span>
+          <a class="sub-link soonlink" href="#">View submission</a>
         </div>
 
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 07</div>
-            <h4>Final Project Feedback</h4>
-            <p>Progress check, peer feedback, and troubleshooting ahead of the final showcase.</p>
-            <span class="tag soon">PLACEHOLDER</span>
-          </div>
-          <a class="sub-link soon" href="#">Coming Soon</a>
+        <div class="sub-card">
+          <div class="meta-line">Week 7 · Module 7</div>
+          <h4>Final Project Feedback</h4>
+          <p>Progress check, peer feedback, and troubleshooting ahead of the final showcase.</p>
+          <span class="status soon">Coming soon</span>
+          <a class="sub-link soonlink" href="#">View submission</a>
         </div>
 
-        <div class="sub-item">
-          <div>
-            <div class="sub-week">WEEK 08</div>
-            <h4>Final Project Showcase</h4>
-            <p>Final project presentation and public Q&amp;A session.</p>
-            <span class="tag soon">PLACEHOLDER</span>
-          </div>
-          <a class="sub-link soon" href="#">Coming Soon</a>
+        <div class="sub-card">
+          <div class="meta-line">Week 8 · Module 8</div>
+          <h4>Final Project Showcase</h4>
+          <p>Final project presentation and public Q&amp;A session.</p>
+          <span class="status soon">Coming soon</span>
+          <a class="sub-link soonlink" href="#">View submission</a>
         </div>
       </div>
     </div>
