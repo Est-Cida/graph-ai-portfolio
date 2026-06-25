@@ -175,10 +175,10 @@ section{padding:96px 0;position:relative}
 .catrow .cprice .sm{font-size:.66rem;color:#8fb0ae;text-transform:uppercase;letter-spacing:.08em}
 @media(max-width:720px){.catrow{grid-template-columns:32px 1fr auto;gap:12px;padding:18px}.catrow .cprice{display:none}.catrow .cinfo .bar{max-width:180px}}
 
-/* ---------- INQUIRY (flyer + chatbot) ---------- */
+/* ---------- INQUIRY (chatbot) ---------- */
 #inquiry{background:linear-gradient(180deg,var(--paper),#fbfaf6)}
-.inquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
-@media(max-width:880px){.inquiry-grid{grid-template-columns:1fr;gap:22px}}
+.inquiry-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:stretch;max-width:760px;margin:0 auto}
+@media(max-width:880px){.inquiry-grid{gap:22px}}
 .inq-panel{
   background:var(--card);border:1px solid var(--line);border-radius:20px;
   box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;
@@ -188,11 +188,6 @@ section{padding:96px 0;position:relative}
 .inq-head .kicker{font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:8px;display:block}
 .inq-head h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;color:var(--ink);letter-spacing:-.01em}
 .inq-head p{font-size:.9rem;color:#5a7175;margin-top:6px}
-
-/* flyer container */
-.flyer-container{padding:18px;display:flex;justify-content:center;align-items:flex-start;background:#fbfaf6;flex:1}
-.flyer-container img{width:100%;height:auto;border-radius:12px;display:block;box-shadow:0 8px 24px -12px rgba(10,58,63,.3)}
-.flyer-actions{padding:14px 24px 20px;display:flex;gap:12px;flex-wrap:wrap}
 
 /* chatbot container */
 #chatbot-container{
@@ -349,26 +344,10 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-tag">04 — Inquiry</span>
-      <h2 class="sec-title">Two ways to get answers.</h2>
-      <p class="sec-sub">Skim the one-page flyer for the quick overview, or ask the Aequora assistant anything about the catalogue, cold-chain handling or shipping.</p>
+      <h2 class="sec-title">Ask the assistant.</h2>
+      <p class="sec-sub">Ask the Aequora assistant anything about the catalogue, cold-chain handling or shipping.</p>
     </div>
     <div class="inquiry-grid">
-
-      <!-- Flyer container -->
-      <div class="inq-panel reveal">
-        <div class="inq-head">
-          <span class="kicker">// Overview</span>
-          <h3>Programme flyer</h3>
-          <p>The Aequora Labs one-pager — the catalogue at a glance.</p>
-        </div>
-        <div class="flyer-container">
-          <img src="AquoaraLabFlyer.png" alt="Aequora Labs flyer — Supplies that arrive where they're needed" loading="lazy">
-        </div>
-        <div class="flyer-actions">
-          <a href="AquoaraLabFlyer.png" target="_blank" rel="noopener" class="btn btn-primary">Open full size →</a>
-          <a href="AquoaraLabFlyer.png" download class="btn btn-ghost">Download</a>
-        </div>
-      </div>
 
       <!-- Chatbot container -->
       <div class="inq-panel reveal">
