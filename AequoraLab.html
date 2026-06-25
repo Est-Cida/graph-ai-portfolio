@@ -175,17 +175,46 @@ section{padding:96px 0;position:relative}
 .catrow .cprice .sm{font-size:.66rem;color:#8fb0ae;text-transform:uppercase;letter-spacing:.08em}
 @media(max-width:720px){.catrow{grid-template-columns:32px 1fr auto;gap:12px;padding:18px}.catrow .cprice{display:none}.catrow .cinfo .bar{max-width:180px}}
 
-/* ---------- REQUEST / FORM ---------- */
-#request{background:linear-gradient(180deg,#fbfaf6,var(--paper))}
-#request .sec-head{margin-left:auto;margin-right:auto;text-align:center}
-.form-frame-wrap{display:flex;justify-content:center}
-.form-card{
+/* ---------- INQUIRY (flyer + chatbot) ---------- */
+#inquiry{background:linear-gradient(180deg,var(--paper),#fbfaf6)}
+.inquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+@media(max-width:880px){.inquiry-grid{grid-template-columns:1fr;gap:22px}}
+.inq-panel{
   background:var(--card);border:1px solid var(--line);border-radius:20px;
-  padding:18px;box-shadow:var(--shadow);width:100%;max-width:700px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;
 }
-.form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--amber))}
-.form-card iframe{
-  width:100%;height:1100px;border:none;border-radius:12px;background:#fff;display:block;
+.inq-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;z-index:2;background:linear-gradient(90deg,var(--teal),var(--amber))}
+.inq-head{padding:22px 24px 16px;border-bottom:1px solid var(--line)}
+.inq-head .kicker{font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:8px;display:block}
+.inq-head h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;color:var(--ink);letter-spacing:-.01em}
+.inq-head p{font-size:.9rem;color:#5a7175;margin-top:6px}
+
+/* flyer container */
+.flyer-container{padding:18px;display:flex;justify-content:center;align-items:flex-start;background:#fbfaf6;flex:1}
+.flyer-container img{width:100%;height:auto;border-radius:12px;display:block;box-shadow:0 8px 24px -12px rgba(10,58,63,.3)}
+.flyer-actions{padding:14px 24px 20px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* chatbot container */
+#chatbot-container{
+  position:relative;flex:1;min-height:560px;
+  background:#fbfaf6;border-radius:0 0 20px 20px;overflow:hidden;
+}
+#chatbot-container .bot-loading{
+  position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;
+  align-items:center;justify-content:center;text-align:center;padding:30px;color:#7c9295;
+}
+#chatbot-container .bot-loading .spin{
+  width:34px;height:34px;border-radius:50%;border:3px solid var(--mist);border-top-color:var(--teal);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+#chatbot-container .bot-loading p{font-size:.85rem;max-width:34ch}
+/* Botpress injects its webchat into this container; make it fill the panel */
+#chatbot-container .bpWebchat,
+#chatbot-container .bpw-layout,
+#chatbot-container iframe{
+  position:absolute!important;inset:0!important;
+  width:100%!important;height:100%!important;max-height:none!important;border:none!important;border-radius:0 0 20px 20px!important;
 }
 
 /* ---------- FLOATING COMMODITY REQUEST BUTTON (right side) ---------- */
@@ -201,9 +230,21 @@ section{padding:96px 0;position:relative}
 .fab-request:hover{background:#d6722e;transform:translateY(-3px);box-shadow:0 16px 34px -6px rgba(232,132,60,.65)}
 .fab-request svg{width:18px;height:18px;fill:#fff;flex:none}
 @media(max-width:600px){
-  .fab-request{right:16px;bottom:18px;padding:12px 16px;font-size:.8rem}
+  .fab-request{right:16px;bottom:18px;padding:14px}
   .fab-request .fab-label{display:none}
-  .fab-request{padding:14px}
+}
+
+/* ---------- REQUEST / FORM ---------- */
+#request{background:linear-gradient(180deg,#fbfaf6,var(--paper))}
+#request .sec-head{margin-left:auto;margin-right:auto;text-align:center}
+.form-frame-wrap{display:flex;justify-content:center}
+.form-card{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:18px;box-shadow:var(--shadow);width:100%;max-width:700px;position:relative;overflow:hidden;
+}
+.form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--amber))}
+.form-card iframe{
+  width:100%;height:1100px;border:none;border-radius:12px;background:#fff;display:block;
 }
 
 /* ---------- FOOTER ---------- */
@@ -230,6 +271,7 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
     <a href="#about">About</a>
     <a href="#products">Catalogue</a>
     <a href="#categories">Categories</a>
+    <a href="#inquiry">Inquiry</a>
     <a href="#request">Request</a>
   </div>
   <button class="navtoggle" onclick="document.querySelector('.navlinks').style.display=document.querySelector('.navlinks').style.display==='flex'?'none':'flex'">≡</button>
@@ -303,10 +345,54 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
   </div>
 </section>
 
+<section id="inquiry">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">04 — Inquiry</span>
+      <h2 class="sec-title">Two ways to get answers.</h2>
+      <p class="sec-sub">Skim the one-page flyer for the quick overview, or ask the Aequora assistant anything about the catalogue, cold-chain handling or shipping.</p>
+    </div>
+    <div class="inquiry-grid">
+
+      <!-- Flyer container -->
+      <div class="inq-panel reveal">
+        <div class="inq-head">
+          <span class="kicker">// Overview</span>
+          <h3>Programme flyer</h3>
+          <p>The Aequora Labs one-pager — the catalogue at a glance.</p>
+        </div>
+        <div class="flyer-container">
+          <img src="AquoaraLabFlyer.png" alt="Aequora Labs flyer — Supplies that arrive where they're needed" loading="lazy">
+        </div>
+        <div class="flyer-actions">
+          <a href="AquoaraLabFlyer.png" target="_blank" rel="noopener" class="btn btn-primary">Open full size →</a>
+          <a href="AquoaraLabFlyer.png" download class="btn btn-ghost">Download</a>
+        </div>
+      </div>
+
+      <!-- Chatbot container -->
+      <div class="inq-panel reveal">
+        <div class="inq-head">
+          <span class="kicker">// Ask the assistant</span>
+          <h3>Aequora chatbot</h3>
+          <p>Ask about products, prices, cold-chain tiers or shipping modes.</p>
+        </div>
+        <div id="chatbot-container">
+          <div class="bot-loading" id="botLoading">
+            <div class="spin"></div>
+            <p>Loading the assistant… if it doesn't appear, use the chat bubble at the bottom of the page.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="request">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-tag">04 — Commodity request</span>
+      <span class="sec-tag">05 — Commodity request</span>
       <h2 class="sec-title">Request a commodity.</h2>
       <p class="sec-sub">Need an item from the catalogue? Register your items of interest below and the operations &amp; support team will follow up.</p>
     </div>
@@ -336,8 +422,8 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
       <div class="foot-col">
         <h5>Project</h5>
         <a href="#about">About the page</a>
+        <a href="#inquiry">Inquiry</a>
         <a href="#request">Commodity request</a>
-        <a href="#about">Dataset</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -439,5 +525,35 @@ new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){document.quer
 // nav shrink
 addEventListener('scroll',()=>{const n=document.querySelector('nav');n.style.padding=scrollY>40?'11px 28px':'16px 28px';});
 </script>
+
+<!-- ===== BOTPRESS CHATBOT (rendered inside #chatbot-container) ===== -->
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/06/25/14/20260625145327-E6AH7HQU.js" defer></script>
+<script>
+(function(){
+  // Tell the Botpress webchat to mount inside our #chatbot-container panel
+  // instead of as a floating bubble. We poll until the injected SDK is ready.
+  function mountBot(){
+    if(!window.botpress || typeof window.botpress.open !== 'function'){ return false; }
+    try{
+      var loading = document.getElementById('botLoading');
+      // Open the webchat directly into the page container.
+      window.botpress.on && window.botpress.on('webchat:ready', function(){
+        if(loading) loading.style.display='none';
+      });
+      window.botpress.open();
+      // Hide the loading note shortly after open in case the ready event is missed.
+      setTimeout(function(){ if(loading) loading.style.display='none'; }, 2500);
+      return true;
+    }catch(e){ return false; }
+  }
+  var tries=0;
+  var t=setInterval(function(){
+    tries++;
+    if(mountBot() || tries>40){ clearInterval(t); }
+  }, 300);
+})();
+</script>
+
 </body>
 </html>
