@@ -175,6 +175,25 @@ section{padding:96px 0;position:relative}
 .catrow .cprice .sm{font-size:.66rem;color:#8fb0ae;text-transform:uppercase;letter-spacing:.08em}
 @media(max-width:720px){.catrow{grid-template-columns:32px 1fr auto;gap:12px;padding:18px}.catrow .cprice{display:none}.catrow .cinfo .bar{max-width:180px}}
 
+/* ---------- FLYER ---------- */
+#flyer{background:linear-gradient(180deg,#fbfaf6,var(--paper))}
+.flyer-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}
+@media(max-width:880px){.flyer-grid{grid-template-columns:1fr;gap:34px}}
+.flyer-copy p{color:#3c5559;font-size:1.04rem;margin-bottom:18px}
+.flyer-copy p strong{color:var(--ink)}
+.flyer-points{display:grid;gap:14px;margin-top:26px}
+.flyer-point{display:flex;gap:13px;align-items:flex-start}
+.flyer-point .dot{flex:none;width:11px;height:11px;border-radius:50%;background:var(--amber);margin-top:7px}
+.flyer-point h4{font-size:.98rem;margin-bottom:2px}
+.flyer-point p{font-size:.9rem;color:#5a7175;margin:0}
+.flyer-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.flyer-frame{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:16px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.flyer-frame::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;z-index:2;background:linear-gradient(90deg,var(--teal),var(--amber))}
+.flyer-frame img{width:100%;height:auto;display:block;border-radius:12px}
+
 /* ---------- INQUIRY (chatbot) ---------- */
 #inquiry{background:linear-gradient(180deg,var(--paper),#fbfaf6)}
 .inquiry-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:stretch;max-width:760px;margin:0 auto}
@@ -266,6 +285,7 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
     <a href="#about">About</a>
     <a href="#products">Catalogue</a>
     <a href="#categories">Categories</a>
+    <a href="#flyer">Flyer</a>
     <a href="#inquiry">Inquiry</a>
     <a href="#request">Request</a>
   </div>
@@ -340,10 +360,37 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
   </div>
 </section>
 
+<section id="flyer">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">04 — Programme flyer</span>
+      <h2 class="sec-title">The catalogue, on a single page.</h2>
+      <p class="sec-sub">A one-page visual abstract of Aequora Labs — designed to share the project at a glance with the field.</p>
+    </div>
+    <div class="flyer-grid">
+      <div class="flyer-copy reveal">
+        <p>The flyer distils the whole system into one shareable page: the headline promise, the catalogue readout, and what it delivers for health and humanitarian response.</p>
+        <div class="flyer-points">
+          <div class="flyer-point"><span class="dot"></span><div><h4>Data-driven insights</h4><p>Real-time visibility of products in motion.</p></div></div>
+          <div class="flyer-point"><span class="dot"></span><div><h4>Trusted logistics</h4><p>Cold-chain items tracked end-to-end.</p></div></div>
+          <div class="flyer-point"><span class="dot"></span><div><h4>Stronger impact</h4><p>Faster decisions and better field outcomes.</p></div></div>
+        </div>
+        <div class="flyer-actions">
+          <a href="AquoaraLabFlyer.png" target="_blank" rel="noopener" class="btn btn-primary">Open full size →</a>
+          <a href="AquoaraLabFlyer.png" download class="btn btn-ghost">Download</a>
+        </div>
+      </div>
+      <div class="flyer-frame reveal">
+        <img src="AquoaraLabFlyer.png" alt="Aequora Labs flyer — Supplies that arrive where they're needed" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="inquiry">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-tag">04 — Inquiry</span>
+      <span class="sec-tag">05 — Inquiry</span>
       <h2 class="sec-title">Ask the assistant.</h2>
       <p class="sec-sub">Ask the Aequora assistant anything about the catalogue, cold-chain handling or shipping.</p>
     </div>
@@ -371,7 +418,7 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
 <section id="request">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-tag">05 — Commodity request</span>
+      <span class="sec-tag">06 — Commodity request</span>
       <h2 class="sec-title">Request a commodity.</h2>
       <p class="sec-sub">Need an item from the catalogue? Register your items of interest below and the operations &amp; support team will follow up.</p>
     </div>
@@ -401,6 +448,7 @@ footer{background:var(--ink);color:#a9c4c2;padding:64px 0 36px}
       <div class="foot-col">
         <h5>Project</h5>
         <a href="#about">About the page</a>
+        <a href="#flyer">Programme flyer</a>
         <a href="#inquiry">Inquiry</a>
         <a href="#request">Commodity request</a>
       </div>
